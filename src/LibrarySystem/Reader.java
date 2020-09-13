@@ -2,16 +2,20 @@ package LibrarySystem;
 
 public class Reader {
 
-    public String name;
-    public String surname;
-    public String dateOfBirthday;
-    public String address;
+    private String name;
+    private String surname;
+    private String dateOfBirthday;
+    private String address;
+    private String login;
+    private String password;
 
-    public Reader(String name, String surname, String dateOfBirthday, String address) {
+    public Reader(String name, String surname, String dateOfBirthday, String address, String login, String password) {
         this.name = name;
         this.surname = surname;
         this.dateOfBirthday = dateOfBirthday;
         this.address = address;
+        this.login = login;
+        this.password = password;
     }
 
     public String getName() {
@@ -46,6 +50,22 @@ public class Reader {
         this.address = address;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Reader{" +
@@ -53,6 +73,8 @@ public class Reader {
                 ", surname='" + surname + '\'' +
                 ", dateOfBirthday='" + dateOfBirthday + '\'' +
                 ", address='" + address + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
