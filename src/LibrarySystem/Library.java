@@ -66,7 +66,7 @@ public class Library {
                         System.out.print("Put your password: ");
                         password = sc.nextLine();
 
-                        newFunction.loginProcess(workerList);
+                        newFunction.loginProcess(login, password, workerList);
 
                     } else if (menu == 3) {
 

@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class LibraryEngine {
 
+    boolean loginStatus = false;
+
     public void addLibraryWorker(String name, String surname, String login, String password, String workerList) throws IOException {
 
         FileWriter newLibraryWorker = new FileWriter(workerList, true);
@@ -29,7 +31,7 @@ public class LibraryEngine {
 
     }
 
-    public void loginProcess(String workerList) throws FileNotFoundException {
+    public void loginProcess(String login, String password, String workerList) throws FileNotFoundException {
 
         File file = new File(workerList);
         Scanner loginProcess = new Scanner(file);
@@ -37,31 +39,31 @@ public class LibraryEngine {
         while (loginProcess.hasNextLine()) {
 
             String line = loginProcess.nextLine();
-            String [] loginAndpasswordTable = line.split(" / ");
+            String[] loginAndpasswordTable = line.split(" / ");
 
-            System.out.println(loginAndpasswordTable[2]); // teraz pokzuje wszystkie loginy,
-            // trzeba zrobic tak żęby przejrzał wszystkie loginy i dopasował do tego co podaliśmy
-            //jeżeli sie zgadza to dalej pyta o hasło
-            //jeżeli dalej się zgadza to wyświetla kolejne menu dla danego pracownika
-        }
+            if (loginAndpasswordTable[2].equals(login)) {
+                if (loginAndpasswordTable[3].equals(password)) {
 
-/*
- public void showLibraryWorkers(String workerList) throws FileNotFoundException {
+                    System.out.println("Hello " + loginAndpasswordTable[0] + " " + loginAndpasswordTable[1]);
+                    System.out.println("Please choose one of the following menu option: ");
 
-        File file = new File(workerList);
-        Scanner showWorkers = new Scanner(file);
+                    loginStatus = true;
+                    System.out.println(loginStatus);
 
-        while (showWorkers.hasNextLine()) {
-            String line = showWorkers.nextLine();
-            String[] linesTable = line.split(" / ");// what kind of separator? put in brackets
-            System.out.println("name: "+ linesTable[0] + ", surname: " + linesTable[1] + ", login: " + linesTable[2] +
-                    ", password: " + linesTable[3]);
+                    break;
+
+                } else{
+                    System.out.println("Unknown");
+                }
+                }else {
+                System.out.println("Unknown login or password, please try again");
+                break;
+
+            }
         }
 
     }
- */
-
-    }
-
-
 }
+
+
+
